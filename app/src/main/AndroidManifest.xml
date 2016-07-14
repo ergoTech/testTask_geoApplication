@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Main"
+            android:name=".controllers.MainListActivity"
             android:uiOptions="splitActionBarWhenNarrow">
             <meta-data
                 android:name="android.support.UI_OPTIONS"
@@ -38,10 +38,10 @@
             android:glEsVersion="0x00020000"
             android:required="true" />
 
-        <activity android:name=".OneObjElem">
+        <activity android:name=".controllers.PolygonMapActivity">
 
         </activity>
-        <activity android:name=".FullScreenMap">
+        <activity android:name=".controllers.FullScreenMapActivity">
 
         </activity>
 

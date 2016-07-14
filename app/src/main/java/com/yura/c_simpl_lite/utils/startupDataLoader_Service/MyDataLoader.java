@@ -1,7 +1,6 @@
-package com.yura.c_simpl_lite.startupDataLoader_Service;
+package com.yura.c_simpl_lite.utils.startupDataLoader_Service;
 
 import android.app.Activity;
-import android.nfc.Tag;
 import android.util.Log;
 
 import com.yura.c_simpl_lite.R;

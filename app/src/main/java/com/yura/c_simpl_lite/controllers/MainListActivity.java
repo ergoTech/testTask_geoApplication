@@ -1,4 +1,4 @@
-package com.yura.c_simpl_lite;
+package com.yura.c_simpl_lite.controllers;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -14,12 +14,15 @@ import android.widget.Toast;
 
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.yura.c_simpl_lite.startupDataLoader_Service.OperationController.PrefferencesController;
-import com.yura.c_simpl_lite.startupDataLoader_Service.OperationController.WorkToDo;
+import com.yura.c_simpl_lite.MyCastomExtra;
+import com.yura.c_simpl_lite.R;
+import com.yura.c_simpl_lite.utils.startupDataLoader_Service.OperationController.PrefferencesController;
+import com.yura.c_simpl_lite.utils.startupDataLoader_Service.OperationController.WorkToDo;
 import com.yura.c_simpl_lite.domainEntities.CropField;
-import com.yura.c_simpl_lite.startupDataLoader_Service.MyDataLoader;
+import com.yura.c_simpl_lite.utils.startupDataLoader_Service.MyDataLoader;
 import com.yura.c_simpl_lite.utils.customAdapters.MyCastomAdapter;
 import com.yura.c_simpl_lite.utils.dbUtils.HelperFactory;
+import com.yura.c_simpl_lite.utils.viewAddons.BaseSlideActivity;
 
 import org.json.JSONException;
 
@@ -28,8 +31,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class Main extends AppCompatActivity  {
-    //public class Main extends MultiDexApplication implements View.OnClickListener {
+public class MainListActivity extends BaseSlideActivity {
+    //public class MainListActivity extends MultiDexApplication implements View.OnClickListener {
     public static final String TAG = "myLog";
     MyCastomAdapter myAdapter;
     ArrayList<CropField> arrayListForAdapter;
@@ -40,22 +43,17 @@ public class Main extends AppCompatActivity  {
 //    String[] cropField_tillAreas;
 
     ListView lvMain;
-    Button goToSecondActivity;
+
     private  final  String EXTRA_KEY_FOR_CROPFIELD = "keyCrF";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
-
         createAndInitDb();
 
-
-        ////////////////////////////////////////////////////////////////////////////////////////
         //view part of code - generates ListView
         List<CropField> cropFieldsList = null;
         try {
@@ -79,7 +77,7 @@ public class Main extends AppCompatActivity  {
                 CropField selectedCropField = arrayListForAdapter.get(position);
                 String msg = "position :" + position + "; cropField_id = " + selectedCropField.getId() +
                         "(" + selectedCropField.getTillArea() + ";" + selectedCropField.getName() + ")";
-                Toast.makeText(Main.this, msg, Toast.LENGTH_LONG).show();
+                Toast.makeText(MainListActivity.this, msg, Toast.LENGTH_LONG).show();
 //                goToSecondActivity_useSerialization(selectedCropField);
                 goToSecondActivity_useCastomExtra(selectedCropField);
 
@@ -98,10 +96,10 @@ public class Main extends AppCompatActivity  {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Toast.makeText(Main.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainListActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
         switch (item.getItemId()) {
             case R.id.menuBtnMap:
-                Toast.makeText(Main.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainListActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
                 goToThirdActivity_useCastomExtra(arrayListForAdapter);
                 break;
             case R.id.menuBtnList:
@@ -122,7 +120,7 @@ public class Main extends AppCompatActivity  {
                 Log.e(TAG, "execution (PrefferencesController class)- doWork()");
                 Log.d(TAG, "prestart load");
                 MyDataLoader dl = new MyDataLoader();
-                String dataToLoad = dl.getStringData(Main.this);
+                String dataToLoad = dl.getStringData(MainListActivity.this);
                 try {
                     dl.populateDbWithData(dataToLoad);
                 } catch (JSONException e) {
@@ -134,7 +132,7 @@ public class Main extends AppCompatActivity  {
     }
 
     private void goToSecondActivity_useSerialization(CropField cropField) {
-        Intent intent = new Intent(this, OneObjElem.class);
+        Intent intent = new Intent(this, PolygonMapActivity.class);
 
         intent.putExtra(EXTRA_KEY_FOR_CROPFIELD, cropField);
         startActivity(intent);
@@ -144,7 +142,7 @@ public class Main extends AppCompatActivity  {
     }
 
     private void goToSecondActivity_useCastomExtra(CropField cropField){
-        Intent intent = new Intent(this, OneObjElem.class);
+        Intent intent = new Intent(this, PolygonMapActivity.class);
         Log.d(TAG,"going to secon activity using my castom extra");
         MyCastomExtra.putExtras(EXTRA_KEY_FOR_CROPFIELD, cropField);
         startActivity(intent);
@@ -152,7 +150,7 @@ public class Main extends AppCompatActivity  {
     };
     private void goToThirdActivity_useCastomExtra(Collection<CropField> CropFields){
         MyCastomExtra.putExtras(EXTRA_KEY_FOR_CROPFIELD,CropFields);
-        Intent intent = new Intent(this,FullScreenMap.class);
+        Intent intent = new Intent(this,FullScreenMapActivity.class);
         startActivity(intent);
     }
 

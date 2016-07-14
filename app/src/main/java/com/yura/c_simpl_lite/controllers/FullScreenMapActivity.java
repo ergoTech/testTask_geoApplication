@@ -1,4 +1,4 @@
-package com.yura.c_simpl_lite;
+package com.yura.c_simpl_lite.controllers;
 
 /**
  * Created by Yuriy S on 14.07.2016.
@@ -21,13 +21,15 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
+import com.yura.c_simpl_lite.MyCastomExtra;
+import com.yura.c_simpl_lite.R;
 import com.yura.c_simpl_lite.domainEntities.Coordinate;
 import com.yura.c_simpl_lite.domainEntities.CropField;
 import com.yura.c_simpl_lite.domainEntities.Polygon;
 
 import java.util.Collection;
 
-public class FullScreenMap extends FragmentActivity implements OnMapReadyCallback {
+public class FullScreenMapActivity extends FragmentActivity implements OnMapReadyCallback {
     private final String EXTRA_KEY_FOR_COLLECTION = "keyCrF";
     Collection<CropField> cropFileds;
     private static final String TAG = "myLog";

@@ -1,14 +1,11 @@
-package com.yura.c_simpl_lite;
+package com.yura.c_simpl_lite.controllers;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -23,17 +20,18 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
+import com.yura.c_simpl_lite.MyCastomExtra;
+import com.yura.c_simpl_lite.R;
 import com.yura.c_simpl_lite.domainEntities.Coordinate;
 import com.yura.c_simpl_lite.domainEntities.CropField;
 import com.yura.c_simpl_lite.domainEntities.Polygon;
+import com.yura.c_simpl_lite.utils.viewAddons.BaseSlideActivity;
 
 import java.util.Collection;
-import java.util.List;
 
-public class OneObjElem extends ActionBarActivity implements OnMapReadyCallback {
-//public class OneObjElem extends AppCompatActivity {
+public class PolygonMapActivity extends BaseSlideActivity implements OnMapReadyCallback {
+//public class PolygonMapActivity extends AppCompatActivity {
 
 
     TextView tvName;
@@ -75,7 +73,7 @@ public class OneObjElem extends ActionBarActivity implements OnMapReadyCallback 
                 PackageManager.PERMISSION_GRANTED){
             map.setMyLocationEnabled(true);
         }else{
-            Toast.makeText(OneObjElem.this, "Dont have permission for MyLocation", Toast.LENGTH_SHORT).show();
+            Toast.makeText(PolygonMapActivity.this, "Dont have permission for MyLocation", Toast.LENGTH_SHORT).show();
         }
 
 //        map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
@@ -136,10 +134,10 @@ public class OneObjElem extends ActionBarActivity implements OnMapReadyCallback 
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Toast.makeText(OneObjElem.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(PolygonMapActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
         switch (item.getItemId()) {
             case R.id.menuBtnGoBack:
-                Toast.makeText(OneObjElem.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(PolygonMapActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
                 finish();
                 break;
             case R.id.menuBtnList:
