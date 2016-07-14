@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+
+
+
+    <item
+        android:id="@+id/menuBtnList"
+        android:icon="@drawable/list_1"
+        android:orderInCategory="1"
+        android:title="@string/action_goToList"
+        app:showAsAction="withText|ifRoom" />
+    <item
+        android:id="@+id/menuBtnMap"
+        android:icon="@drawable/map1"
+        android:orderInCategory="2"
+        android:title="@string/action_goToMap"
+        app:showAsAction="withText|ifRoom" />
+
+
+
+</menu>
