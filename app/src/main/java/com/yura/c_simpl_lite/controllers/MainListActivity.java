@@ -1,20 +1,18 @@
 package com.yura.c_simpl_lite.controllers;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.yura.c_simpl_lite.MyCastomExtra;
+import com.yura.c_simpl_lite.utils.staticDataHolder.MyCastomExtra;
 import com.yura.c_simpl_lite.R;
 import com.yura.c_simpl_lite.utils.startupDataLoader_Service.OperationController.PrefferencesController;
 import com.yura.c_simpl_lite.utils.startupDataLoader_Service.OperationController.WorkToDo;

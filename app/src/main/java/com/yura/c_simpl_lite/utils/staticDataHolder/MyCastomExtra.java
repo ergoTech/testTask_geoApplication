@@ -1,7 +1,8 @@
-package com.yura.c_simpl_lite;
+package com.yura.c_simpl_lite.utils.staticDataHolder;
 
 import android.util.Log;
 
+import com.google.android.gms.maps.GoogleMap;
 import com.yura.c_simpl_lite.domainEntities.CropField;
 
 import java.util.Collection;
@@ -24,7 +25,12 @@ public class MyCastomExtra {
         return (Collection<CropField>) myExtras.get(key);
     }
 
-
+   public static void putMap(GoogleMap map){
+       myExtras.put("map",map);
+   }
+    public static GoogleMap getMap(){
+        return (GoogleMap) myExtras.get("map");
+    }
     public static void putExtras(String key,CropField cropField){
 
         myExtras.put(key,cropField);

@@ -8,9 +8,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -19,9 +16,9 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
-import com.yura.c_simpl_lite.MyCastomExtra;
+import com.yura.c_simpl_lite.utils.staticDataHolder.GlobalApplicationContext;
+import com.yura.c_simpl_lite.utils.staticDataHolder.MyCastomExtra;
 import com.yura.c_simpl_lite.R;
 import com.yura.c_simpl_lite.domainEntities.Coordinate;
 import com.yura.c_simpl_lite.domainEntities.CropField;
@@ -49,6 +46,10 @@ public class FullScreenMapActivity extends FragmentActivity implements OnMapRead
 
     @Override
     public void onMapReady(GoogleMap map) {
+      GoogleMap savedMap= (GoogleMap) GlobalApplicationContext.getInstance().get("asd");
+        if(savedMap!=null){
+            map.setMapType(savedMap.getMapType());
+        }
         // Add a marker in Sydney, Australia, and move the camera.
         map.getUiSettings().setZoomControlsEnabled(true);
         LatLngBounds.Builder builder = new LatLngBounds.Builder();

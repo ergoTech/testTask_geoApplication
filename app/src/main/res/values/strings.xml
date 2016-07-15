@@ -3,4 +3,5 @@
     <string name="action_goToMap">Go to map</string>
     <string name="action_goToList">Go to list</string>
     <string name="action_goBack">GO BACK TO THE LIST</string>
+    <string name="mapTypes">Map types</string>
 </resources>

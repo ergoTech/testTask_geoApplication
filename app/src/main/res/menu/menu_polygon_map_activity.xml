@@ -7,4 +7,9 @@
         android:orderInCategory="1"
         android:title="@string/action_goBack"
         app:showAsAction="withText|ifRoom" />
+    <item
+        android:id="@+id/menuSettings"
+        android:orderInCategory="1"
+        android:title="@string/mapTypes"
+        app:showAsAction="never" />
 </menu>
