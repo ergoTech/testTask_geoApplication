@@ -9,7 +9,7 @@ import com.yura.c_simpl_lite.R;
  * Created by Yuriy S on 15.07.2016.
  */
 
-public class BaseSlideActivity extends AppCompatActivity {
+public abstract class  BaseSlideActivity extends AppCompatActivity {
     int onStartCount = 0;
 
     @Override

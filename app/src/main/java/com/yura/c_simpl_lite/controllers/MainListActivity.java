@@ -1,7 +1,10 @@
 package com.yura.c_simpl_lite.controllers;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +15,7 @@ import android.widget.Toast;
 
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.yura.c_simpl_lite.utils.customAdapters.SimpleAnimatedAdapter;
 import com.yura.c_simpl_lite.utils.staticDataHolder.MyCastomExtra;
 import com.yura.c_simpl_lite.R;
 import com.yura.c_simpl_lite.utils.startupDataLoader_Service.OperationController.PrefferencesController;
@@ -51,7 +55,10 @@ public class MainListActivity extends BaseSlideActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createAndInitDb();
-
+//        ActionBar bar = getActionBar();
+//        bar.setBackgroundDrawable(new ColorDrawable());
+//        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.action_bar_color)));
+//        ContextCompat.getColor(this,R.color.action_bar_color);
         //view part of code - generates ListView
         List<CropField> cropFieldsList = null;
         try {
@@ -64,11 +71,12 @@ public class MainListActivity extends BaseSlideActivity {
 //        convertyng types LinkedList->ArrayList
         arrayListForAdapter = new ArrayList<>(cropFieldsList);
         // creating adapter
-        myAdapter = new MyCastomAdapter(this, arrayListForAdapter);
-
+//        myAdapter = new MyCastomAdapter(this, arrayListForAdapter);
+//       MyCastomAdapter myAdapter = new MyCastomAdapter(this, arrayListForAdapter);
+SimpleAnimatedAdapter animAdapter = new SimpleAnimatedAdapter(this,arrayListForAdapter);
         // setting up ListView
         lvMain = (ListView) findViewById(R.id.lvMain);
-        lvMain.setAdapter(myAdapter);
+        lvMain.setAdapter(animAdapter);
         lvMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

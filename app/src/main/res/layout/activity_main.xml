@@ -12,14 +12,14 @@
 
 
 
-    <ToggleButton
+    <!--<ToggleButton-->
 
-        android:id="@+id/switcher"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:checked="false"
-        android:clickable="true"
-        android:text="“List On Map" />
+        <!--android:id="@+id/switcher"-->
+        <!--android:layout_width="125dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:checked="false"-->
+        <!--android:clickable="true"-->
+        <!--android:text="“List On Map" />-->
 
     <ListView
         android:id="@+id/lvMain"

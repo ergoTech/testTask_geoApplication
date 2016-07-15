@@ -23,10 +23,12 @@ import com.yura.c_simpl_lite.R;
 import com.yura.c_simpl_lite.domainEntities.Coordinate;
 import com.yura.c_simpl_lite.domainEntities.CropField;
 import com.yura.c_simpl_lite.domainEntities.Polygon;
+import com.yura.c_simpl_lite.utils.viewAddons.BaseSlideActivity;
 
 import java.util.Collection;
 
-public class FullScreenMapActivity extends FragmentActivity implements OnMapReadyCallback {
+//public class FullScreenMapActivity extends FragmentActivity implements OnMapReadyCallback {
+public class FullScreenMapActivity extends BaseSlideActivity implements OnMapReadyCallback {
     private final String EXTRA_KEY_FOR_COLLECTION = "keyCrF";
     Collection<CropField> cropFileds;
     private static final String TAG = "myLog";

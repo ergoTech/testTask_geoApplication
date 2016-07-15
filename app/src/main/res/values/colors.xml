@@ -7,4 +7,5 @@
     <color name="custom">#ded7d9</color>
     <color name="start">#21fafffe</color>
     <color name="end">#545450</color>
+    <color name="action_bar_color">#615f64</color>
 </resources>

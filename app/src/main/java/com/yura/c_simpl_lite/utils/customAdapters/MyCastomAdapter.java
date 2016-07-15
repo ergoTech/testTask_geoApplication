@@ -29,19 +29,18 @@ public class MyCastomAdapter extends BaseAdapter {
     }
 
 
-    // кол-во элементов
+    // how many elems
     @Override
     public int getCount() {
         return objects.size();
     }
-    // элемент по позиции
+    // elem by position
     @Override
     public Object getItem(int position) {
         return objects.get(position);
     }
 
-    // id по позиции
-    //unnsupported
+    // id by position
     @Override
     public long getItemId(int position) {
         return 0;
@@ -49,7 +48,7 @@ public class MyCastomAdapter extends BaseAdapter {
     // list horizontal elem
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // используем созданные, но не используемые view
+        // uses empty(free view)
         View view = convertView;
         if (view == null) {
             view = lInflater.inflate(R.layout.list_item, parent, false);

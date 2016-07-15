@@ -68,10 +68,10 @@
             android:layout_weight="50"
             android:gravity="center"
             android:textSize="50dp" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="click"/>
+        <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:onClick="click"/>-->
     </LinearLayout>
 
 </LinearLayout>
