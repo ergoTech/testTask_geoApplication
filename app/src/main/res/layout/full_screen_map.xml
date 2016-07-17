@@ -1,7 +1,65 @@
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/map"
-    tools:context=".MapsActivity"
-    android:name="com.google.android.gms.maps.SupportMapFragment" />
+    android:orientation="vertical">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MapsActivity">
+
+    </fragment>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/backgroud_layout">
+
+        <Button
+            android:id="@+id/btnField_fullscreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:maxHeight="48dp"
+            android:maxWidth="48dp"
+
+            android:text="@string/all_fields" />
+
+        android:background="@drawable/field_icon"
+
+        <Button
+            android:id="@+id/btnMyLocation_fullscreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:width="48dp"
+            android:height="48dp"
+
+
+            android:text="@string/my_location" />
+        android:background="@drawable/my_location"
+    </LinearLayout>
+    <!--<LinerLayout-->
+    <!--android:id="asdasdasd"-->
+    <!-- -->
+
+    <!--android:background="@drawable/backgroud_layout"-->
+    <!--android:gravity="center">-->
+    <!--<Button-->
+    <!--android:id="@+id/btnGo"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center_horizontal"-->
+    <!--android:layout_marginTop="5dp"-->
+    <!--android:text="GO"/>-->
+
+
+    <!--</LinerLayout>-->
+</RelativeLayout>

@@ -4,4 +4,9 @@
     <string name="action_goToList">Go to list</string>
     <string name="action_goBack">GO BACK TO THE LIST</string>
     <string name="mapTypes">Map types</string>
+    <string name="all_fields">All fields</string>
+    <string name="my_location">My location</string>
+    <string name="field">Field</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
 </resources>

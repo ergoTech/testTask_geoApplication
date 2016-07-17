@@ -57,7 +57,7 @@ public class SingleChoiceDialogFragment extends DialogFragment{
         @Override
         public void onClick(DialogInterface dialog, int which)
         {
-           GoogleMap map = (GoogleMap) GlobalApplicationContext.getInstance().get("asd");
+           GoogleMap map = (GoogleMap) GlobalApplicationContext.getInstance().get("full_screen_map");
             switch (which){
                 case 0:
                     MyCastomExtra.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);

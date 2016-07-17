@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,9 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.PolygonOptions;
+import com.yura.c_simpl_lite.utils.MyMapServices.MapConfig.Mapper;
+import com.yura.c_simpl_lite.utils.MyMapServices.MyLocationService.MyLocationManager;
+import com.yura.c_simpl_lite.utils.MyMapServices.MyLocationService.PlayServiceConnection;
 import com.yura.c_simpl_lite.utils.staticDataHolder.GlobalApplicationContext;
 import com.yura.c_simpl_lite.utils.staticDataHolder.MyCastomExtra;
 import com.yura.c_simpl_lite.R;
@@ -33,54 +37,84 @@ import com.yura.c_simpl_lite.utils.viewAddons.BaseSlideActivity;
 import java.util.ArrayList;
 import java.util.Collection;
 
+// DONT FORGET TO PUT CONNECT/DISCONECT METHODS to ACTIVITY methods
 public class PolygonMapActivity extends BaseSlideActivity implements OnMapReadyCallback {
 //public class PolygonMapActivity extends AppCompatActivity {
-final static int MAPTYPE_SELECTOR_DIALOG = 1;
-final static int NOT_IMPLEMENTED_DIALOG = 2;
-final static String MAP_TYPES[] = {"Road map","Hybrid","Satelite","Terrain"};
+
+    final static int MAPTYPE_SELECTOR_DIALOG = 1;
+    final static int NOT_IMPLEMENTED_DIALOG = 2;
+    final static String MAP_TYPES[] = {"Road map", "Hybrid", "Satelite", "Terrain"};
     final static String MAP_KEY_FOR_CONTEXT = "map key";
     TextView tvName;
     TextView tvCrop;
     TextView tvTillArea;
+
+    Button btnNext;
+    Button btnPrevious;
     private static final String TAG = "myLog";
     private final String EXTRA_KEY_FOR_CROPFIELD = "keyCrF";
 
+    //serves for getting mylocation
+
+    PlayServiceConnection connection;
+    LatLng myLastLocation;
+    LatLng polygonCenter;
     SupportMapFragment mapFragment;
     GoogleMap map;
     CropField cropField;
+    public final static String TAGC = "myConLog";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.polygon_map_activity);
+        setContentView(R.layout.polygon_map_activ);
+        connection = MyLocationManager.getPlayServiceConnection(this);
+        Log.d(TAGC, "in onCreate connecion == null: " + String.valueOf(connection == null));
+//   cropField = deserializeDataFromIntent();
 
-//        cropField = deserializeDataFromIntent();
 
         cropField = retrieveDataFromCastomExtra();
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-//
+
+        setTextToViews(cropField);
+
+    }
+
+    private void setTextToViews(CropField cropField) {
         tvCrop = (TextView) findViewById(R.id.tvCrop);
         tvName = (TextView) findViewById((R.id.tvName));
         tvTillArea = (TextView) findViewById(R.id.tvTillArea);
         tvTillArea.setText(String.valueOf(cropField.getTillArea()) + "ha");
         tvName.setText(cropField.getName());
         tvCrop.setText(cropField.getCrop());
-
     }
 
     @Override
     public void onMapReady(GoogleMap map) {
+//        map.setMyLocationEnabled(true);
+        Log.d(PlayServiceConnection.TAG, "in method onMap ready");
+        Log.d(TAGC, "in method onMap ready, connecion == null: " + String.valueOf(connection == null));
+        Log.d(TAGC, "is connected: " + String.valueOf(connection.getmGoogleApiClient().isConnected()));
+
+
+//        -----------------------------------------------------
+        Button moveToMyLocationButton = (Button) findViewById(R.id.btnMyLocation_fullscreen);
+//        Button moveToFieldButton = (Button) findViewById(R.id.btnPmoveToPolygon_polygonMap);
+        new Mapper(map, connection).set_moveToLocationOnButtonClick(moveToMyLocationButton, Mapper.Settings.ADD_MARKER);
+//       ----------------------------------------------
+//        new Mapper(map, polygonCenter).set_moveToLocationOnButtonClick(moveToFieldButton);
         this.map = map;
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) ==
-                PackageManager.PERMISSION_GRANTED) {
-            map.setMyLocationEnabled(true);
-        } else {
-            Toast.makeText(PolygonMapActivity.this, "Dont have permission for MyLocation", Toast.LENGTH_SHORT).show();
-        }
+//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) ==
+//                PackageManager.PERMISSION_GRANTED) {
+//            map.setMyLocationEnabled(true);
+//        } else {
+//            Toast.makeText(PolygonMapActivity.this, "Dont have permission for MyLocation", Toast.LENGTH_SHORT).show();
+//        }
 
 //        map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         map.getUiSettings().setZoomControlsEnabled(true);
@@ -94,6 +128,7 @@ final static String MAP_TYPES[] = {"Road map","Hybrid","Satelite","Terrain"};
     public boolean onPrepareOptionsMenu(Menu menu) {
         return super.onPrepareOptionsMenu(menu);
     }
+
 
     private void initMap(GoogleMap map) {
         Collection<Polygon> polygons = cropField.getMultipolygon();
@@ -114,31 +149,34 @@ final static String MAP_TYPES[] = {"Road map","Hybrid","Satelite","Terrain"};
             LatLngBounds bounds = builder.build();
 
 
-            LatLng center = bounds.getCenter();
+            polygonCenter = bounds.getCenter();
+            Log.d(TAGC, "polygon center :" + polygonCenter.toString());
+            Button moveToFieldButton = (Button) findViewById(R.id.btnField_fullscreen);
+            new Mapper(map, polygonCenter).set_moveToLocationOnButtonClick(moveToFieldButton, Mapper.Settings.DONT_ADD_MARKER);
 
             polygonOptions.strokeWidth(5)
                     .strokeColor(Color.BLACK);
             com.google.android.gms.maps.model.Polygon gPOl = map.addPolygon(polygonOptions);
             int width = getResources().getDisplayMetrics().widthPixels;
             int heigth = getResources().getDisplayMetrics().heightPixels;
-            int padding = (int) (width * 0.10);
+            int padding = (int) (width * 0.20);
             CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, width, heigth, padding);
             map.animateCamera(cu);
             Log.d(TAG, "POLYGON HAS BEEN SET");
-            GoogleMap mapFromStorage = (GoogleMap) GlobalApplicationContext.getInstance().get("asd");
+            GoogleMap mapFromStorage = (GoogleMap) GlobalApplicationContext.getInstance().get("full_screen_map");
 
-         // -----------------------------------------------------------------------
-        //wierd way to handle with lost current state problem on displayOrientation switch, ( saving current menu settings)
-            if(mapFromStorage!=null){
+            // -----------------------------------------------------------------------
+            //wierd way to handle with lost current state problem on displayOrientation switch, ( saving current menu settings)
+            if (mapFromStorage != null) {
                 Toast.makeText(PolygonMapActivity.this, "Map in the storage is not null", Toast.LENGTH_SHORT).show();
                 map.setMapType(mapFromStorage.getMapType());
-            }else{
+            } else {
                 Toast.makeText(PolygonMapActivity.this, "Map in the storage is  null", Toast.LENGTH_SHORT).show();
-                GlobalApplicationContext.getInstance().put("asd", map);
-                GoogleMap mfap = (GoogleMap) GlobalApplicationContext.getInstance().get("asd");
-                Log.d(TAG,"from context  (mfap==null) "+(mfap==null));
+                GlobalApplicationContext.getInstance().put("full_screen_map", map);
+                GoogleMap mfap = (GoogleMap) GlobalApplicationContext.getInstance().get("full_screen_map");
+                Log.d(TAG, "from context  (mfap==null) " + (mfap == null));
             }
-         //   ------------------------------------------------------------------------
+            //   ------------------------------------------------------------------------
         }
     }
 
@@ -173,7 +211,7 @@ final static String MAP_TYPES[] = {"Road map","Hybrid","Satelite","Terrain"};
                 bundle.putInt(SingleChoiceDialogFragment.SELECTED, 0);
                 dialog.setArguments(bundle);
                 MyCastomExtra.putMap(map);
-                dialog.show(manager,"Dialog");
+                dialog.show(manager, "Dialog");
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -196,5 +234,20 @@ final static String MAP_TYPES[] = {"Road map","Hybrid","Satelite","Terrain"};
     public void click(View v) {
         Toast.makeText(PolygonMapActivity.this, "map type has been changed", Toast.LENGTH_SHORT).show();
         map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+    }
+
+    @Override
+    protected void onStop() {
+        Log.d(PlayServiceConnection.TAG, "onStop() method");
+        connection.playServiceConnectionClose();
+        super.onStop();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(PlayServiceConnection.TAG, "onStart() method");
+        connection.playServiceConnectionOpen();
+        Log.d(PlayServiceConnection.TAG, "is connecnted" + String.valueOf(connection.getmGoogleApiClient().isConnected()));
     }
 }

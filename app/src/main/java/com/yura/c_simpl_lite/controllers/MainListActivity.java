@@ -1,10 +1,7 @@
 package com.yura.c_simpl_lite.controllers;
 
-import android.app.ActionBar;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,14 +12,14 @@ import android.widget.Toast;
 
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.yura.c_simpl_lite.utils.customAdapters.SimpleAnimatedAdapter;
+import com.yura.c_simpl_lite.utils.castomAdapters.SimpleAnimatedAdapter;
 import com.yura.c_simpl_lite.utils.staticDataHolder.MyCastomExtra;
 import com.yura.c_simpl_lite.R;
 import com.yura.c_simpl_lite.utils.startupDataLoader_Service.OperationController.PrefferencesController;
 import com.yura.c_simpl_lite.utils.startupDataLoader_Service.OperationController.WorkToDo;
 import com.yura.c_simpl_lite.domainEntities.CropField;
 import com.yura.c_simpl_lite.utils.startupDataLoader_Service.MyDataLoader;
-import com.yura.c_simpl_lite.utils.customAdapters.MyCastomAdapter;
+import com.yura.c_simpl_lite.utils.castomAdapters.MyCastomAdapter;
 import com.yura.c_simpl_lite.utils.dbUtils.HelperFactory;
 import com.yura.c_simpl_lite.utils.viewAddons.BaseSlideActivity;
 

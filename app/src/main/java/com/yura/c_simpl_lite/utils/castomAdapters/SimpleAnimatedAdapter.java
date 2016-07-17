@@ -1,4 +1,4 @@
-package com.yura.c_simpl_lite.utils.customAdapters;
+package com.yura.c_simpl_lite.utils.castomAdapters;
 
 import android.animation.Animator;
 import android.content.Context;

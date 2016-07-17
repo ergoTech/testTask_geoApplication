@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:background="@drawable/mygradient"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/mygradient"
     android:orientation="horizontal">
 
     <LinearLayout
         android:id="@+id/linearLeft"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
         android:layout_gravity="left"
-        android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-       >
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
         <TextView
 
             android:id="@+id/tvName"
@@ -24,50 +24,49 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_weight="1"
-
             android:text="23"
-            android:textSize="20sp">
-        </TextView>
+            android:textSize="20sp"></TextView>
+
         <TextView
             android:id="@+id/tvCrop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="Ячминь озимый"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:layout_marginLeft="10dp">
-        </TextView>
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Ячминь озимый"></TextView>
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/linearRight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="right"
         android:layout_marginRight="5dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_gravity="right"
-        android:gravity="right">
+        android:gravity="right"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/tvLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
             android:text="Area"
-            android:textSize="20sp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="5dp">
-        </TextView>
+            android:textSize="20sp"></TextView>
+
         <TextView
             android:id="@+id/tvTillArea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
+            android:layout_marginBottom="5dp"
             android:layout_marginRight="10dp"
-            android:text="15,06 ha"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp">
-        </TextView>
+            android:text="15,06 ha"></TextView>
     </LinearLayout>
 
 </LinearLayout>
