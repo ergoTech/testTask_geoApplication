@@ -12,16 +12,16 @@ import android.widget.Toast;
 
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.yura.c_simpl_lite.utils.castomAdapters.SimpleAnimatedAdapter;
-import com.yura.c_simpl_lite.utils.staticDataHolder.MyCastomExtra;
+import com.yura.c_simpl_lite.utils.customAdapters.SimpleAnimatedAdapter;
+import com.yura.c_simpl_lite.utils.staticDataHolder.MyCustomExtra;
 import com.yura.c_simpl_lite.R;
 import com.yura.c_simpl_lite.utils.startupDataLoader_Service.OperationController.PrefferencesController;
 import com.yura.c_simpl_lite.utils.startupDataLoader_Service.OperationController.WorkToDo;
 import com.yura.c_simpl_lite.domainEntities.CropField;
 import com.yura.c_simpl_lite.utils.startupDataLoader_Service.MyDataLoader;
-import com.yura.c_simpl_lite.utils.castomAdapters.MyCastomAdapter;
+import com.yura.c_simpl_lite.utils.customAdapters.MyCustomAdapter;
 import com.yura.c_simpl_lite.utils.dbUtils.HelperFactory;
-import com.yura.c_simpl_lite.utils.viewAddons.BaseSlideActivity;
+import com.yura.c_simpl_lite.utils.activityAnimation.BaseSlideActivity;
 
 import org.json.JSONException;
 
@@ -33,7 +33,7 @@ import java.util.List;
 public class MainListActivity extends BaseSlideActivity {
     //public class MainListActivity extends MultiDexApplication implements View.OnClickListener {
     public static final String TAG = "myLog";
-    MyCastomAdapter myAdapter;
+    MyCustomAdapter myAdapter;
     ArrayList<CropField> arrayListForAdapter;
 
 //    int[] cropField_ids;
@@ -68,8 +68,8 @@ public class MainListActivity extends BaseSlideActivity {
 //        convertyng types LinkedList->ArrayList
         arrayListForAdapter = new ArrayList<>(cropFieldsList);
         // creating adapter
-//        myAdapter = new MyCastomAdapter(this, arrayListForAdapter);
-//       MyCastomAdapter myAdapter = new MyCastomAdapter(this, arrayListForAdapter);
+//        myAdapter = new MyCustomAdapter(this, arrayListForAdapter);
+//       MyCustomAdapter myAdapter = new MyCustomAdapter(this, arrayListForAdapter);
 SimpleAnimatedAdapter animAdapter = new SimpleAnimatedAdapter(this,arrayListForAdapter);
         // setting up ListView
         lvMain = (ListView) findViewById(R.id.lvMain);
@@ -147,12 +147,12 @@ SimpleAnimatedAdapter animAdapter = new SimpleAnimatedAdapter(this,arrayListForA
     private void goToSecondActivity_useCastomExtra(CropField cropField){
         Intent intent = new Intent(this, PolygonMapActivity.class);
         Log.d(TAG,"going to secon activity using my castom extra");
-        MyCastomExtra.putExtras(EXTRA_KEY_FOR_CROPFIELD, cropField);
+        MyCustomExtra.putExtras(EXTRA_KEY_FOR_CROPFIELD, cropField);
         startActivity(intent);
 
     };
     private void goToThirdActivity_useCastomExtra(Collection<CropField> CropFields){
-        MyCastomExtra.putExtras(EXTRA_KEY_FOR_CROPFIELD,CropFields);
+        MyCustomExtra.putExtras(EXTRA_KEY_FOR_CROPFIELD, CropFields);
         Intent intent = new Intent(this,FullScreenMapActivity.class);
         startActivity(intent);
     }

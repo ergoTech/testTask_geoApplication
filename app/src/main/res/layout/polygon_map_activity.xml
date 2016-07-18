@@ -49,7 +49,7 @@
                     android:layout_weight="50"
                     android:text="asdasdad"
                     android:textColor="@color/name_text_color"
-                    android:textSize="70dp" />
+                    android:textSize="22sp" />
 
                 <TextView
                     android:id="@+id/tvCrop"
@@ -59,7 +59,7 @@
                     android:layout_weight="50"
 
                     android:text="asdasdad"
-                    android:textSize="50dp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
 
@@ -70,7 +70,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="50"
                 android:gravity="center"
-                android:textSize="50dp" />
+                android:textSize="18sp" />
 
 
         </LinearLayout>
@@ -94,25 +94,7 @@
                 android:text="@string/next" />
         </LinearLayout>
 
-        <!--<TableRow-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
 
-        <!--<Button-->
-        <!--android:text="@string/my_location"-->
-        <!--android:id="@+id/btnMyLocation_polygonMap"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="right" />-->
-
-        <!--<Button-->
-        <!--android:text="@string/field"-->
-        <!--android:id="@+id/btnPmoveToPolygon_polygonMap"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content" />-->
-
-        <!-- -->
-        <!--</TableRow>-->
     </LinearLayout>
 
     <LinearLayout
@@ -121,7 +103,7 @@
         android:background="@drawable/backgroud_layout">
 
         <Button
-            android:id="@+id/btnField_fullscreen"
+            android:id="@+id/btnField_polygon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
@@ -130,19 +112,17 @@
             android:maxHeight="48dp"
             android:maxWidth="48dp"
 
-            android:text="@string/all_fields" />
+            android:text="@string/field" />
 
 
         <Button
-            android:id="@+id/btnMyLocation_fullscreen"
+            android:id="@+id/btnMyLocation_polygon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:width="48dp"
             android:height="48dp"
-
-
             android:text="@string/my_location" />
         android:background="@drawable/my_location"
     </LinearLayout>

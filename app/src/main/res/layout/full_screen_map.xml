@@ -28,7 +28,6 @@
             android:layout_marginLeft="20dp"
             android:maxHeight="48dp"
             android:maxWidth="48dp"
-
             android:text="@string/all_fields" />
 
         android:background="@drawable/field_icon"
@@ -46,20 +45,5 @@
             android:text="@string/my_location" />
         android:background="@drawable/my_location"
     </LinearLayout>
-    <!--<LinerLayout-->
-    <!--android:id="asdasdasd"-->
-    <!-- -->
 
-    <!--android:background="@drawable/backgroud_layout"-->
-    <!--android:gravity="center">-->
-    <!--<Button-->
-    <!--android:id="@+id/btnGo"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="center_horizontal"-->
-    <!--android:layout_marginTop="5dp"-->
-    <!--android:text="GO"/>-->
-
-
-    <!--</LinerLayout>-->
 </RelativeLayout>

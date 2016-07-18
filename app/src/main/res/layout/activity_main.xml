@@ -12,15 +12,6 @@
 
 
 
-    <!--<ToggleButton-->
-
-        <!--android:id="@+id/switcher"-->
-        <!--android:layout_width="125dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:checked="false"-->
-        <!--android:clickable="true"-->
-        <!--android:text="“List On Map" />-->
-
     <ListView
         android:id="@+id/lvMain"
         android:layout_width="match_parent"
@@ -33,7 +24,7 @@
     <!--android:layout_height="wrap_content"-->
     <!--android:layout_gravity="center_horizontal"-->
     <!--android:layout_marginTop="5dp"-->
-    <!--android:text="GO">-->
+    <!--android:text="TEST BUTTON">-->
         <!--android:text="@string/box">-->
     <!--</Button>-->
 </LinearLayout>

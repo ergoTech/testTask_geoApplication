@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * Created by Yuriy S on 13.07.2016.
  */
-public class MyCastomExtra {
+public class MyCustomExtra {
     private  static final String TAG = "myLog";
 
    volatile private static Map<String,Object> myExtras = new HashMap<>();

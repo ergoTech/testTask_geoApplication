@@ -1,4 +1,4 @@
-package com.yura.c_simpl_lite.utils.castomAdapters;
+package com.yura.c_simpl_lite.utils.customAdapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,13 +15,13 @@ import java.util.ArrayList;
 /**
  * Created by Yuriy S on 11.07.2016.
  */
-public class MyCastomAdapter extends BaseAdapter {
+public class MyCustomAdapter extends BaseAdapter {
 
     Context ctx;
     LayoutInflater lInflater;
     ArrayList<CropField> objects;
 
-    public MyCastomAdapter(Context context, ArrayList<CropField> products) {
+    public MyCustomAdapter(Context context, ArrayList<CropField> products) {
         ctx = context;
         objects = products;
         lInflater = (LayoutInflater) ctx

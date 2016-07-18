@@ -5,14 +5,10 @@ package com.yura.c_simpl_lite.controllers;
  */
 
 import android.Manifest;
-import android.app.ActionBar;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.location.Location;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,9 +16,7 @@ import android.widget.Toast;
 
 //import com.google.android.gms.appindexing.Action;
 //import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -30,18 +24,17 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
-import com.yura.c_simpl_lite.utils.MyMapServices.MapConfig.Mapper;
-import com.yura.c_simpl_lite.utils.MyMapServices.MyLocationService.MyLocationManager;
-import com.yura.c_simpl_lite.utils.MyMapServices.MyLocationService.PlayServiceConnection;
+import com.yura.c_simpl_lite.utils.mapServices.mapConfig.CameraMapper;
+import com.yura.c_simpl_lite.utils.mapServices.myLocationService.MyLocationManager;
+import com.yura.c_simpl_lite.utils.mapServices.myLocationService.PlayServiceConnection;
 import com.yura.c_simpl_lite.utils.staticDataHolder.GlobalApplicationContext;
-import com.yura.c_simpl_lite.utils.staticDataHolder.MyCastomExtra;
+import com.yura.c_simpl_lite.utils.staticDataHolder.MyCustomExtra;
 import com.yura.c_simpl_lite.R;
 import com.yura.c_simpl_lite.domainEntities.Coordinate;
 import com.yura.c_simpl_lite.domainEntities.CropField;
 import com.yura.c_simpl_lite.domainEntities.Polygon;
-import com.yura.c_simpl_lite.utils.viewAddons.BaseSlideActivity;
+import com.yura.c_simpl_lite.utils.activityAnimation.BaseSlideActivity;
 
 import java.util.Collection;
 
@@ -99,7 +92,7 @@ public class FullScreenMapActivity extends BaseSlideActivity implements OnMapRea
 //        map.setOnMyLocationButtonClickListener(myLocetionListener);
         Button moveToMyLocationButton = (Button) findViewById(R.id.btnMyLocation_fullscreen);
 //        Button moveToFieldButton = (Button) findViewById(R.id.btnPmoveToPolygon_polygonMap);
-        new Mapper(map, connection).set_moveToLocationOnButtonClick(moveToMyLocationButton, Mapper.Settings.ADD_MARKER);
+        new CameraMapper(map, connection).set_moveToLocationOnButtonClick(moveToMyLocationButton, CameraMapper.Settings.ADD_MARKER);
 
 
         GoogleMap savedMap = (GoogleMap) GlobalApplicationContext.getInstance().get("full_screen_map");
@@ -142,12 +135,12 @@ public class FullScreenMapActivity extends BaseSlideActivity implements OnMapRea
         Log.d(TAG, "POLYGON HAS BEEN SET");
         LatLng center = bounds.getCenter();
         Button moveToFieldButton = (Button) findViewById(R.id.btnField_fullscreen);
-        new Mapper(map, center).set_moveToLocationOnButtonClick(moveToFieldButton, Mapper.Settings.DONT_ADD_MARKER);
+        new CameraMapper(map, center).set_moveToLocationOnButtonClick(moveToFieldButton, CameraMapper.Settings.DONT_ADD_MARKER);
     }
 
     private Collection<CropField> retrieveDataFromCastomExtra() {
-        MyCastomExtra.getExtrases(EXTRA_KEY_FOR_COLLECTION);
-        return MyCastomExtra.getExtrases(EXTRA_KEY_FOR_COLLECTION);
+        MyCustomExtra.getExtrases(EXTRA_KEY_FOR_COLLECTION);
+        return MyCustomExtra.getExtrases(EXTRA_KEY_FOR_COLLECTION);
     }
 
 //    private GoogleMap.OnMyLocationButtonClickListener myLocetionListener = new GoogleMap.OnMyLocationButtonClickListener() {

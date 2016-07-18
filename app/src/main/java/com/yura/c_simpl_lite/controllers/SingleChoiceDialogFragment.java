@@ -9,7 +9,7 @@ import android.os.Bundle;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.yura.c_simpl_lite.utils.staticDataHolder.GlobalApplicationContext;
-import com.yura.c_simpl_lite.utils.staticDataHolder.MyCastomExtra;
+import com.yura.c_simpl_lite.utils.staticDataHolder.MyCustomExtra;
 
 import java.util.List;
 
@@ -60,19 +60,19 @@ public class SingleChoiceDialogFragment extends DialogFragment{
            GoogleMap map = (GoogleMap) GlobalApplicationContext.getInstance().get("full_screen_map");
             switch (which){
                 case 0:
-                    MyCastomExtra.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                    MyCustomExtra.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);
                     map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
                     break;
                 case 1:
-                    MyCastomExtra.getMap().setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                    MyCustomExtra.getMap().setMapType(GoogleMap.MAP_TYPE_HYBRID);
                     map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
                     break;
                 case 2:
-                    MyCastomExtra.getMap().setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                    MyCustomExtra.getMap().setMapType(GoogleMap.MAP_TYPE_SATELLITE);
                     map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
                     break;
                 case 3:
-                    MyCastomExtra.getMap().setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                    MyCustomExtra.getMap().setMapType(GoogleMap.MAP_TYPE_TERRAIN);
                     map.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
                     break;
             }

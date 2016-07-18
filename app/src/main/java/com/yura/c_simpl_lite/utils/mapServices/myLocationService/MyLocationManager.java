@@ -1,4 +1,4 @@
-package com.yura.c_simpl_lite.utils.MyMapServices.MyLocationService;
+package com.yura.c_simpl_lite.utils.mapServices.myLocationService;
 
 import android.content.Context;
 import android.util.Log;

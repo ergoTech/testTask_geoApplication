@@ -31,7 +31,7 @@ dependencies {
     //    compile 'com.google.android.gms:play-services:9.2.1'
 
 // Enabling multidex support.
-    compile 'com.android.support:multidex:1.0.0'
+//    compile 'com.android.support:multidex:1.0.0'
 
 
 //    compile 'com.google.android.gms:play-services-appindexing:9.2.1'

@@ -1,4 +1,4 @@
-package com.yura.c_simpl_lite.utils.castomAdapters;
+package com.yura.c_simpl_lite.utils.customAdapters;
 
 import android.animation.Animator;
 import android.content.Context;
@@ -33,18 +33,18 @@ private  final static String TAG = "myLog";
     }
 
 
-    // кол-во элементов
+    // quantity of elems
     @Override
     public int getCount() {
         return objects.size();
     }
-    // элемент по позиции
+
     @Override
     public Object getItem(int position) {
         return objects.get(position);
     }
 
-    // id по позиции
+    // id by position
     //unnsupported
     @Override
     public long getItemId(int position) {
@@ -53,7 +53,7 @@ private  final static String TAG = "myLog";
     // list horizontal elem
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // используем созданные, но не используемые view
+
         View view = convertView;
         if (view == null) {
             view = lInflater.inflate(R.layout.list_item, parent, false);

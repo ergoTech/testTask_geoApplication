@@ -1,4 +1,4 @@
-package com.yura.c_simpl_lite.utils.viewAddons;
+package com.yura.c_simpl_lite.utils.activityAnimation;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

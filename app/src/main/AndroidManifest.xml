@@ -27,10 +27,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+           <!-- relize version-->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCtcSDP9Mpc2NrpVyKvLg1p4GvA9mtU6xg" />
+            android:value="AIzaSyDJQLFfxfh7D_iguTG0QPGpMkrpQpvF--U" />
+        <!--<meta-data-->
+            <!--android:name="com.google.android.geo.API_KEY"-->
+            <!--android:value="AIzaSyCtcSDP9Mpc2NrpVyKvLg1p4GvA9mtU6xg" />-->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
